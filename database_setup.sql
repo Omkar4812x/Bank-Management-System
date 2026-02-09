@@ -51,8 +51,19 @@ CREATE TABLE login (
     formno VARCHAR(20),
     card_number VARCHAR(20) PRIMARY KEY,
     pin VARCHAR(10),
+    failed_attempts INT DEFAULT 0,
+    is_locked BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (formno) REFERENCES signup(formno)
 );
+
+-- Table for admin credentials
+CREATE TABLE admin (
+    username VARCHAR(50) PRIMARY KEY,
+    password VARCHAR(50)
+);
+
+-- Insert default admin
+INSERT INTO admin (username, password) VALUES ('admin', 'admin123');
 
 -- Table for bank transactions
 CREATE TABLE bank (
@@ -66,4 +77,4 @@ CREATE TABLE bank (
 SHOW TABLES;
 
 -- Display success message
-SELECT 'Database bankSystem created successfully!' AS Status;
+SELECT 'Database bankSystem updated with admin table' AS Status;

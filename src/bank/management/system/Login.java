@@ -70,6 +70,19 @@ public class Login extends JFrame implements ActionListener {
         button3.addActionListener(this);
         add(button3);
 
+        JButton adminBtn = new JButton("ADMIN LOGIN");
+        adminBtn.setBounds(300, 390, 230, 30);
+        adminBtn.setBackground(new Color(65, 125, 128));
+        adminBtn.setForeground(Color.WHITE);
+        adminBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new AdminLogin();
+            }
+        });
+        add(adminBtn);
+
         getContentPane().setBackground(Color.WHITE);
 
         setSize(800, 480);
