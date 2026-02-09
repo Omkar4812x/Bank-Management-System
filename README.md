@@ -9,7 +9,7 @@ A professional Java Swing-based desktop application for managing banking operati
 - **Course**: Master of Computer Applications (MCA)
 - **Year**: First Year
 - **Project Type**: Minor Project
-- **Developer**: Omkar
+- **Developer**: Omkar Bhandalkar
 
 ---
 
