@@ -106,6 +106,21 @@ public class AdminLogin extends JFrame implements ActionListener {
                 new Login();
             }
         } catch (Exception E) {
+            if (E.getMessage().contains("admin") || E.getMessage().contains("Table")
+                    || E.getMessage().contains("doesn't exist")) {
+                try {
+                    Connn c2 = new Connn();
+                    c2.statement.executeUpdate(
+                            "create table if not exists admin (username varchar(50) primary key, password varchar(50))");
+                    c2.statement.executeUpdate(
+                            "insert ignore into admin (username, password) values ('admin', 'admin123')");
+                    c2.statement.executeUpdate(
+                            "insert ignore into admin (username, password) values ('Omkar', 'Omkar@2004')");
+                    JOptionPane.showMessageDialog(null, "Admin System Initialized. Try Login Again.");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
             E.printStackTrace();
         }
     }

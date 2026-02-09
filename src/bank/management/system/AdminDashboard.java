@@ -388,10 +388,45 @@ public class AdminDashboard extends JFrame implements ActionListener {
                 c.statement.executeUpdate("delete from signuptwo where formno = '" + formno + "'");
                 c.statement.executeUpdate("delete from signup where formno = '" + formno + "'");
                 JOptionPane.showMessageDialog(null, "Customer " + formno + " removed.");
+                resequenceFormNumbers(); // Auto-adjust IDs
                 refreshAllData();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    private void resequenceFormNumbers() {
+        try {
+            System.out.println("Resequencing form numbers...");
+            Connn c = new Connn();
+            // Fetch all customers ordered by current formno
+            ResultSet rs = c.statement.executeQuery("select formno from signup order by cast(formno as unsigned) asc");
+            Vector<String> oldIds = new Vector<>();
+            while (rs.next()) {
+                oldIds.add(rs.getString("formno"));
+            }
+
+            // Update each customer with new sequential ID
+            for (int i = 0; i < oldIds.size(); i++) {
+                String oldId = oldIds.get(i);
+                String newId = String.format("%04d", i + 1);
+
+                if (!oldId.equals(newId)) {
+                    System.out.println("Updating " + oldId + " to " + newId);
+                    // Update all dependent tables first
+                    c.statement.executeUpdate(
+                            "update signuptwo set formno = '" + newId + "' where formno = '" + oldId + "'");
+                    c.statement.executeUpdate(
+                            "update signupthree set formno = '" + newId + "' where formno = '" + oldId + "'");
+                    c.statement
+                            .executeUpdate("update login set formno = '" + newId + "' where formno = '" + oldId + "'");
+                    c.statement
+                            .executeUpdate("update signup set formno = '" + newId + "' where formno = '" + oldId + "'");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.Random;
 
 public class Signup extends JFrame implements ActionListener {
@@ -13,12 +14,26 @@ public class Signup extends JFrame implements ActionListener {
 
     JTextField textName, textFname, textEmail, textAdd, textcity, textState, textPin;
     JDateChooser dateChooser;
-    Random ran = new Random();
-    long first4 = (ran.nextLong() % 9000L) + 1000L;
-    String first = " " + Math.abs(first4);
+    String first;
 
     Signup() {
         super("APPLICATION FORM");
+
+        // Fetch next sequential ID
+        try {
+            Connn c = new Connn();
+            ResultSet rs = c.statement.executeQuery("select max(cast(formno as unsigned)) from signup");
+            int nextId = 1;
+            if (rs.next() && rs.getString(1) != null) {
+                nextId = rs.getInt(1) + 1;
+            }
+            first = String.format("%04d", nextId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Random ran = new Random();
+            long first4 = (ran.nextLong() % 9000L) + 1000L;
+            first = String.format("%04d", Math.abs(first4));
+        }
 
         setLayout(null);
 
