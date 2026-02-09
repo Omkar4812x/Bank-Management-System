@@ -1,0 +1,19 @@
+# Compiled class files
+out/
+bin/
+*.class
+
+# IDE specific files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
