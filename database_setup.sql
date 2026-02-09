@@ -62,8 +62,9 @@ CREATE TABLE admin (
     password VARCHAR(50)
 );
 
--- Insert default admin
+-- Insert default admins
 INSERT INTO admin (username, password) VALUES ('admin', 'admin123');
+INSERT INTO admin (username, password) VALUES ('Omkar', 'Omkar@2004');
 
 -- Table for bank transactions
 CREATE TABLE bank (
