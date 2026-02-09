@@ -17,3 +17,5 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+temp_build/
+BankManagementSystem_Updated.jar
