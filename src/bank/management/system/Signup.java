@@ -252,6 +252,7 @@ public class Signup extends JFrame implements ActionListener {
 
         } catch (Exception E) {
             E.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + E.getMessage());
         }
 
     }

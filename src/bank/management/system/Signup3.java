@@ -217,7 +217,8 @@ public class Signup3 extends JFrame implements ActionListener {
                 } else {
                     Connn c1 = new Connn();
                     String q1 = "insert into signupthree values(?, ?, ?, ?, ?)";
-                    String q2 = "insert into login values(?, ?, ?)";
+                    // Explicitly name columns to avoid mismatch with security columns
+                    String q2 = "insert into login (formno, card_number, pin) values(?, ?, ?)";
 
                     java.sql.PreparedStatement pstmt1 = c1.connection.prepareStatement(q1);
                     pstmt1.setString(1, formno);
@@ -239,6 +240,7 @@ public class Signup3 extends JFrame implements ActionListener {
                 }
             } catch (Exception E) {
                 E.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error: " + E.getMessage());
             }
         } else if (e.getSource() == c) {
             System.exit(0);
