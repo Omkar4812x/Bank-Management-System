@@ -1,2 +1,0 @@
-Main-Class: bank.management.system.Login
-
