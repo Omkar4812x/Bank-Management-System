@@ -1,13 +1,13 @@
 # Bank Management System - MCA Minor Project 🏦
 
-**MCA First Year Minor Project**  
+**MCA Second Year Minor Project**  
 A professional Java Swing-based desktop application for managing banking operations. This project simulates an ATM experience, utilizing Java JDBC and MySQL for secure data persistence.
 
 ---
 
 ## 🎓 Academic Context
 - **Course**: Master of Computer Applications (MCA)
-- **Year**: First Year
+- **Year**: Second Year
 - **Project Type**: Minor Project
 - **Developer**: Omkar Bhandalkar
 
@@ -95,5 +95,5 @@ The current implementation uses:
 
 ## 👤 Author
 **Omkar**  
-*MCA First Year Student*  
+*MCA Second Year Student*  
 Project developed with focus on Object-Oriented Programming (OOP) and Secure Database Management.
